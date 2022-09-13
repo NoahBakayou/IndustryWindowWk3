@@ -45,19 +45,26 @@ public class GameGrid {
         }
         int iUserRow = 0;
         int iUserCol = 0;
-        boolean exit;
+        boolean exit = false;
         aiGrid[0][0] = 0;
-        System.out.println("Move left or right");
-        while (iUserRow < 9 || iUserCol< 9) {
+        System.out.println("Press 1 to move left or 2 to go right");
+        while (iUserRow < 9 || iUserCol < 9) {
             Scanner scanner = new Scanner(System.in);
             int ans = scanner.nextInt();
 
-            if (ans == 1){
+            if (ans == 1) {
                 iUserRow++;
-            } else {
+            } else if (ans == 2) {
                 iUserCol++;
             }
-
+            if (aiGrid[iUserCol][iUserRow] == 1) {
+                System.out.println("You lose");
+                break;
+            }
+            if (iUserRow >= 9 || iUserCol >= 9) {
+                System.out.println("You win!");
+                break;
+            }
 
 
         }
