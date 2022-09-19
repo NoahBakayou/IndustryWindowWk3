@@ -47,17 +47,18 @@ public class GameGrid {
         int iUserCol = 0;
         boolean exit = false;
         aiGrid[0][0] = 0;
-        System.out.println("Press 1 to move left or 2 to go right");
+        System.out.println("Press 1 to move right or 2 to go down");
+        Scanner scanner = new Scanner(System.in);
         while (iUserRow < 9 || iUserCol < 9) {
-            Scanner scanner = new Scanner(System.in);
+
             int ans = scanner.nextInt();
 
             if (ans == 1) {
-                iUserRow++;
-            } else if (ans == 2) {
                 iUserCol++;
+            } else if (ans == 2) {
+                iUserRow++;
             }
-            if (aiGrid[iUserCol][iUserRow] == 1) {
+            if (aiGrid[iUserRow][iUserCol] == 1) {
                 System.out.println("You lose");
                 break;
             }
@@ -67,6 +68,22 @@ public class GameGrid {
             }
 
 
+        }
+        for (int y = 0; y < aiGrid.length; y++) { //aiGrid.length = 10
+            for (int x = 0; x < aiGrid[0].length; x++) {
+
+                //Use wall chance to decide whether wall or path here.
+               // iTempNum = oRand.nextInt(100);
+                if(y == iUserRow && x == iUserCol){
+                    System.out.print("X  ");;
+                }
+                else{
+                    System.out.print(aiGrid[y][x] + "  ");
+                }
+                //aiGrid[y][x] = oRand.nextInt(2);
+
+            }
+            System.out.println(""); //prints empty line with or w/out quotes
         }
     }
 
