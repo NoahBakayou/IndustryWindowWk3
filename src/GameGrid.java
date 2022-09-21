@@ -100,8 +100,9 @@ public class GameGrid {
             }
             System.out.println("  "); //prints empty line with or w/out quotes
         }
+
+        System.out.println("You made " + playerMoves + " moves.");
     }
-        System.out.println("You made "+playerMoves +" moves.");
 }
 
 
