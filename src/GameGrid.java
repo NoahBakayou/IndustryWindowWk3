@@ -39,7 +39,10 @@ public class GameGrid {
                     aiGrid[y][x] = 0;
                 }
                 //aiGrid[y][x] = oRand.nextInt(2);
-
+                if(y == 0 && x == 0){
+                    aiGrid[0][0] = 0;
+                    oLinkedList.addHeadNode(0, 0);
+                }
                 System.out.print(aiGrid[y][x] + "  ");
 
             }
@@ -47,10 +50,9 @@ public class GameGrid {
         }
         int iUserRow = 0;
         int iUserCol = 0;
-        boolean exit = true;
         int playerMoves = 0;
 
-        aiGrid[0][0] = 0;
+
         System.out.println("Press 1 to move right or 2 to go down");
         Scanner scanner = new Scanner(System.in);
         while (iUserRow < 9 || iUserCol < 9) {
@@ -69,17 +71,16 @@ public class GameGrid {
 
             if (aiGrid[iUserRow][iUserCol] == 1) {
                 System.out.println("You lose");
-                exit = false;
-            } else {
-                if (iUserRow >= 9 || iUserCol >= 9) {
+                break;
+            } else if (iUserRow >= 9 || iUserCol >= 9) {
                     System.out.println("You win!");
-                    exit = false;
+                 break;
                 }
             }
-        }
+
 
         while (oLinkedList.headNode != null) {
-            aiGrid[newNode.yPosition][newNode.xPosition] = 3;
+            aiGrid[newNode.xPosition][newNode.yPosition] = 3;
             newNode = oLinkedList.removeHeadNode();
 
         }
@@ -93,7 +94,7 @@ public class GameGrid {
                     System.out.print("X  ");
                     ;
                 } else {
-                    System.out.print(aiGrid[y][x] + "  ");
+                    System.out.print(aiGrid[x][y] + "  ");
                 }
                 //aiGrid[y][x] = oRand.nextInt(2);
 

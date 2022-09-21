@@ -1,7 +1,7 @@
 public class LinkedList {
-    Node headNode; //node type instance variable
+    Node headNode = null; //node type instance variable
 
-    public void addHeadNode(int x, int y) {
+    public void addHeadNode(int y, int x) {
 
         Node newNode = new Node();
 
