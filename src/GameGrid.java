@@ -19,6 +19,7 @@ public class GameGrid {
     public void run() {
 
         LinkedList oLinkedList = new LinkedList();
+        Node newNode = new Node();
 
         int[][] aiGrid = new int[10][10]; //imagine ([y],[x])
         SecureRandom oRand = new SecureRandom();
@@ -46,7 +47,7 @@ public class GameGrid {
         }
         int iUserRow = 0;
         int iUserCol = 0;
-        boolean exit = false;
+        boolean exit = true;
         int playerMoves = 0;
 
         aiGrid[0][0] = 0;
@@ -65,14 +66,16 @@ public class GameGrid {
                 oLinkedList.addHeadNode(iUserRow, iUserCol);
                 playerMoves++;
             }
-        }
-        if (aiGrid[iUserRow][iUserCol] == 1) {
-            System.out.println("You lose");
-            exit = false;
-        }
-        if (iUserRow >= 9 || iUserCol >= 9) {
-            System.out.println("You win!");
-            exit = false;
+
+            if (aiGrid[iUserRow][iUserCol] == 1) {
+                System.out.println("You lose");
+                exit = false;
+            } else {
+                if (iUserRow >= 9 || iUserCol >= 9) {
+                    System.out.println("You win!");
+                    exit = false;
+                }
+            }
         }
 
         while (oLinkedList.headNode != null) {
@@ -95,10 +98,11 @@ public class GameGrid {
                 //aiGrid[y][x] = oRand.nextInt(2);
 
             }
-            System.out.println(""); //prints empty line with or w/out quotes
+            System.out.println("  "); //prints empty line with or w/out quotes
         }
-        System.out.println("You made " + playerMoves + " moves.");
     }
+        System.out.println("You made "+playerMoves +" moves.");
 }
+
 
 
